@@ -70,7 +70,7 @@ test_users = test_data_warm["user_id"].unique()
 my_logger.logger.info("Семплирование тестовых данных.")
 
 unique_users = test_data_warm['user_id'].unique()
-num_to_remove = int(0.4 * len(unique_users))
+num_to_remove = int(0.6 * len(unique_users))
 users_to_remove = np.random.choice(unique_users, size=num_to_remove, replace=False)
 test_data_warm = test_data_warm[~test_data_warm['user_id'].isin(users_to_remove)]
 
@@ -79,7 +79,7 @@ test_data_warm = test_data_warm[~test_data_warm['user_id'].isin(users_to_remove)
 
 
 unique_users = test_data_cold['user_id'].unique()
-num_to_remove = int(0.4 * len(unique_users))
+num_to_remove = int(0.6 * len(unique_users))
 users_to_remove = np.random.choice(unique_users, size=num_to_remove, replace=False)
 test_data_cold = test_data_cold[~test_data_cold['user_id'].isin(users_to_remove)]
 
