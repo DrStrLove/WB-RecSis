@@ -1,0 +1,10 @@
+joblib
+numpy
+pandas
+pyarrow
+tqdm
+scipy
+scikit-learn
+catboost
+rectools
+implicit
