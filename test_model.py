@@ -190,7 +190,7 @@ bst_rec['target'] = (df_target['_merge'] == 'both').astype(int)
 del df_target
 
 
-unique_items = history['item_id'].unique()
+nique_items = history['item_id'].unique()
 item_to_idx = {item: idx for idx, item in enumerate(unique_items)}
 idx_to_item = {idx: item for item, idx in item_to_idx.items()}
 
@@ -224,8 +224,8 @@ def calculate_mean_normalized_cooccurrence(user_id, candidate_item):
     return scores.mean() if len(scores) > 0 else 0
 
 bst_rec['m_n_co'] = [
-    calculate_mean_normalized_cooccurrence(row['user_id'], row['item_id'])
-    for _, row in bst_rec.iterrows()
+    0 if row['user_id'] not in user_to_idx else calculate_mean_normalized_cooccurrence(row['user_id'], row['item_id'])
+    for _, row in tqdm(bst_rec.iterrows(), total=len(bst_rec))
 ]
 
 item_popularity = history.groupby('item_id')['user_id'].nunique().reset_index()
